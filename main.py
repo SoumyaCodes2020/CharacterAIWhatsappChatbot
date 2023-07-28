@@ -31,14 +31,16 @@ def reply():
     """
     # Fetch the message
     msg = request.form.get('Body')
-    print(f"REPLY: The following body was received: {msg}")
 
-    # Define response
-    resp = MessagingResponse()
+    print(f"REPLY: The following body was received: {msg}")
 
     # Test message
     if msg.strip().lower() == "@test_msg":
-        resp.message("Bot is activated and functioning!")
+        message = client.messages.create(
+            body='Hello there! Bot is up and running!',
+            from_='whatsapp:+14155238886',
+            to=fromnum
+        )
 
 
 if __name__ == '__main__':
